@@ -8,6 +8,6 @@
 (defonce state (reagent/atom {}))
 
 (defn title []
-  [:h1 "Nutrack"])
+  [:h3 "Nutrack"])
 
 (reagent/render [title] (.getElementById js/document "app"))
