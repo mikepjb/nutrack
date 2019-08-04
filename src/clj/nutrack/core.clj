@@ -1,6 +1,5 @@
 (ns nutrack.core
   (:require [yada.yada :as yada]
-            [bidi.vhosts :refer [vhosts-model]]
             [cheshire.core :as json]))
 
 (defn routes []
