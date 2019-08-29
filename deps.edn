@@ -3,5 +3,6 @@
         com.bhauman/figwheel-main {:mvn/version "0.2.3"}
         reagent {:mvn/version "0.8.1"}
         re-frame {:mvn/version "0.10.8"}
-        yada {:mvn/version "1.2.15"}}
+        yada {:mvn/version "1.2.15"}
+        io.prometheus/simpleclient_hotspot {:mvn/version"0.1.0"}}
  :paths ["src/clj" "src/cljs" "test" "target" "resources"]}
