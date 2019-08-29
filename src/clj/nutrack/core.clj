@@ -34,3 +34,8 @@
 (defn restart []
   (stop-server)
   (start-server))
+
+(defn -main
+  "Main entrypoint for Uberjar"
+  [& args]
+  (start-server))
