@@ -4,5 +4,8 @@
         reagent {:mvn/version "0.8.1"}
         re-frame {:mvn/version "0.10.8"}
         yada {:mvn/version "1.2.15"}
-        io.prometheus/simpleclient_hotspot {:mvn/version"0.1.0"}}
- :paths ["src/clj" "src/cljs" "test" "target" "resources"]}
+        clj-commons/iapetos {:mvn/version "0.1.9"}
+        io.prometheus/simpleclient_hotspot {:mvn/version"0.6.0"}}
+ :paths ["src/clj" "src/cljs" "test" "target" "resources"]
+ :aliases
+ {:run {:main-opts ["-m" "nutrack.core"]}}}

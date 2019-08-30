@@ -9,6 +9,8 @@ services:
 
   grafana:
     image: grafana/grafana:5.1.5
+    # We start the container using the same userid as you have locally for permissioning.
+    user: ${UID}:${GID}
     ports:
       - 3000:3000
     volumes:
@@ -18,9 +20,8 @@ services:
     depends_on:
       - prometheus
 
-  # TODO: Potentially use this when you have a Dockerfile setup
-  # app:
-  #   build: .
-  #   ports:
-  #     - 8080:8080
+  nutrack:
+    build: .
+    ports:
+      - 8080:8080
 

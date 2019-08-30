@@ -1,6 +1,13 @@
 (ns nutrack.core
   (:require [yada.yada :as yada]
-            [cheshire.core :as json]))
+            [cheshire.core :as json]
+            [iapetos.core :as prometheus]
+            [iapetos.collector.jvm :as jvm]
+            [iapetos.export :as export]))
+
+(defonce registry
+  (-> (prometheus/collector-registry)
+      jvm/initialize))
 
 (defn routes []
   ["/test"
@@ -25,6 +32,11 @@
                                 :version "0.1"
                                 :description "Describes how to get information from the backend server."}
                          :basePath "/api"})]
+       ["/metrics" (yada/resource
+                     {:methods
+                      {:get
+                       {:produces "text/plain"
+                        :response (export/text-format registry)}}})]
        ]]
      {:port 8080})))
 
