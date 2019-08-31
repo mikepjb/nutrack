@@ -2,3 +2,4 @@
 .nrepl-port
 target
 etc/grafana-data/grafana.db
+/etc/grafana-data/sessions
