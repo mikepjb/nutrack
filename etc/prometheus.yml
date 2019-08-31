@@ -7,7 +7,11 @@ scrape_configs:
     scrape_interval: 5s
     static_configs:
       - targets: ['grafana:3000']
-  - job_name: 'app'
+  - job_name: 'postgres'
     scrape_interval: 5s
     static_configs:
-      - targets: ['nutrack:8080']
+      - targets: ['postgres-exporter:9187']
+  - job_name: 'nutrack'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['172.17.0.1:8080']

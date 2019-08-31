@@ -39,6 +39,9 @@ so far.
 UK Government has nutrient content data.
 https://www.gov.uk/government/publications/composition-of-foods-integrated-dataset-cofid
 
+Technical Difficulties accessing Clojure running on host from docker-compose (in Linux):
+https://stackoverflow.com/questions/31324981/how-to-access-host-port-from-docker-container
+
 ## Commercial Viability
 
 chompthis.com is a company that provide a Food Database API
