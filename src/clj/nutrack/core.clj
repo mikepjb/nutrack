@@ -15,7 +15,13 @@
     {:methods
      {:get
       {:produces "application/json"
-       :response (json/generate-string {:response "Hello World"})}}})])
+       :response (json/generate-string {:response "Hello World"})}}})]
+  ["/search"
+   (yada/resource
+    {:methods
+     {:get
+      {:produces "application/json"
+       :response (json/generate-string [{:name "bread" :type "food" :text "Bread"}])}}})])
 
 (defn start-server []
   (def server
