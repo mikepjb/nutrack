@@ -10,40 +10,41 @@
       jvm/initialize))
 
 (defn routes []
-  ["/test"
-   (yada/resource
-    {:methods
-     {:get
-      {:produces "application/json"
-       :response (json/generate-string {:response "Hello World"})}}})]
-  ["/search"
-   (yada/resource
-    {:methods
-     {:get
-      {:produces "application/json"
-       :response (json/generate-string [{:name "bread" :type "food" :text "Bread"}])}}})])
+  [["/test"
+     (yada/resource
+      {:methods
+       {:get
+        {:produces "application/json"
+         :response (json/generate-string {:response "Hello World"})}}})]
+   ["/search"
+    (yada/resource
+     {:methods
+      {:get
+       {:produces "application/json"
+        :response (json/generate-string [{:name "bread" :type "food" :text "Bread"}])}}})]])
+
+(defn base []
+  [["/" (yada/resource
+         {:methods
+          {:get
+           {:produces "text/plain"
+            :response "Hello Root."}}})]
+   ["/api" (yada/swaggered ["" (routes)]
+                           {:info {:title "Nutrack API"
+                                   :version "0.1"
+                                   :description "Describes how to get information from the backend server."}
+                            :basePath "/api"})]
+   ["/metrics" (yada/resource
+                {:methods
+                 {:get
+                  {:produces "text/plain"
+                   :response (export/text-format registry)}}})]
+   ])
 
 (defn start-server []
   (def server
     (yada/listener
-     [""
-      [["/" (yada/resource
-            {:methods
-             {:get
-              {:produces "text/plain"
-               :response "Hello Root."}}})]
-       (routes)
-       ["/api" (yada/swaggered (routes)
-                        {:info {:title "Nutrack API"
-                                :version "0.1"
-                                :description "Describes how to get information from the backend server."}
-                         :basePath "/api"})]
-       ["/metrics" (yada/resource
-                     {:methods
-                      {:get
-                       {:produces "text/plain"
-                        :response (export/text-format registry)}}})]
-       ]]
+     ["" (reduce conj (base) (routes))]
      {:port 8080})))
 
 (defn stop-server []
