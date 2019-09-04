@@ -1,9 +1,18 @@
 {:deps {org.clojure/clojure {:mvn/version "1.9.0"}
+
+        ;; frontend
         org.clojure/clojurescript {:mvn/version "1.10.339"}
         com.bhauman/figwheel-main {:mvn/version "0.2.3"}
         reagent {:mvn/version "0.8.1"}
         re-frame {:mvn/version "0.10.8"}
+
+        ;; server
         yada {:mvn/version "1.2.15"}
+        migratus {:mvn/version "1.2.4"}
+        com.taoensso/timbre {:mvn/version "4.10.0"}
+        com.fzakaria/slf4j-timbre {:mvn/version "0.3.14"}
+
+        ;; monitoring
         clj-commons/iapetos {:mvn/version "0.1.9"}
         io.prometheus/simpleclient_hotspot {:mvn/version"0.6.0"}}
  :paths ["src/clj" "src/cljs" "test" "target" "resources"]
