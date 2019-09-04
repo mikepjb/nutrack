@@ -42,6 +42,9 @@ https://www.gov.uk/government/publications/composition-of-foods-integrated-datas
 Technical Difficulties accessing Clojure running on host from docker-compose (in Linux):
 https://stackoverflow.com/questions/31324981/how-to-access-host-port-from-docker-container
 
+Similar offering - free? track 60+ Nutrients for 300,000+ foods
+https://cronometer.com/
+
 ## Commercial Viability
 
 chompthis.com is a company that provide a Food Database API
