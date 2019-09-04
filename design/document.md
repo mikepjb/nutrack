@@ -34,6 +34,10 @@ Tesco provide an API to access their product information.. we can also find
 some food information to load into PostgreSQL.. that is as far as I've thought
 so far.
 
+### Data Model
+
+Ingredients - is a collection of food/drink consumes alone or as part of a recipe.
+
 # References
 
 UK Government has nutrient content data.
