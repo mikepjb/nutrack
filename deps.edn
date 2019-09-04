@@ -11,6 +11,7 @@
         migratus {:mvn/version "1.2.4"}
         com.taoensso/timbre {:mvn/version "4.10.0"}
         com.fzakaria/slf4j-timbre {:mvn/version "0.3.14"}
+        org.postgresql/postgresql {:mvn/version "42.2.5"}
 
         ;; monitoring
         clj-commons/iapetos {:mvn/version "0.1.9"}
