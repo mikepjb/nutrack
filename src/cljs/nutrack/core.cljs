@@ -11,12 +11,24 @@
   [:header
    [:h3 "Nutrack"]])
 
-(defn search []
-  [:section.search
-   [:input]])
+(def ingredients
+  ["Steak"
+   "Rice"
+   "Chicken"
+   "Lemon"
+   "Pepper"])
 
 (defn suggestions []
-  [:div])
+  [:div.suggestions
+   [:ul
+    (map (fn [e]
+           ^{:key e} [:li e]) ingredients)]])
+
+(defn search []
+  [:section.search
+   [:div
+    [:input]
+    [suggestions]]])
 
 (defn page []
   [:div.background
