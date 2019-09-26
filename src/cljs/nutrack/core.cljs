@@ -15,6 +15,9 @@
   [:section.search
    [:input]])
 
+(defn suggestions []
+  [:div])
+
 (defn page []
   [:div.background
    [header]
