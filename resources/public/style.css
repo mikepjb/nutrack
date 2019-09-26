@@ -44,7 +44,7 @@ h3 {font-size: 32px;}
 
 header {
     padding: 16px;
-    color: var(--primary-10);
+    color: var(--primary-6);
     background-image: linear-gradient(var(--primary-1), rgba(100, 100, 100, 0));
 }
 
@@ -52,4 +52,15 @@ header {
     height: 100vh;
     background: url('sample-background.jpg');
     background-size: cover;
+}
+
+.search {
+    display: flex;
+    justify-content: center;
+    padding: 96px 0;
+}
+
+.search > input {
+    font-size: 24px;
+    padding: 12px;
 }
