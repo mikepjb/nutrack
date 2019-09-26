@@ -7,7 +7,17 @@
 
 (defonce state (reagent/atom {}))
 
-(defn title []
-  [:h3 "Nutrack"])
+(defn header []
+  [:header
+   [:h3 "Nutrack"]])
 
-(reagent/render [title] (.getElementById js/document "app"))
+(defn search []
+  [:div
+   [:input]])
+
+(defn page []
+  [:section.search
+   [header]
+   [search]])
+
+(reagent/render [page] (.getElementById js/document "app"))

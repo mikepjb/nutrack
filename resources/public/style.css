@@ -1,3 +1,33 @@
+:root {
+  --primary-1: hsl(125, 86%, 14%);
+  --primary-1-trans: hsla(125, 86%, 14%, .15);
+  --primary-2: hsl(125, 73%, 20%);
+  --primary-3: hsl(125, 56%, 29%);
+  --primary-3-trans: hsla(125, 56%, 29%, .15);
+  --primary-4: hsl(122, 47%, 35%);
+  --primary-5: hsl(122, 39%, 41%);
+  --primary-6: hsl(123, 35%, 51%);
+  --primary-7: hsl(123, 38%, 63%);
+  --primary-8: hsl(122, 42%, 75%);
+  --primary-9: hsl(126, 49%, 84%);
+  --primary-10: hsl(125, 65%, 93%);
+  --grey-1: hsl(0, 0%, 13%);
+  --grey-1-trans: hsla(0, 0%, 13%, .15);
+  --grey-2: hsl(0, 0%, 23%);
+  --grey-3: hsl(0, 0%, 32%);
+  --grey-3-trans: hsla(0, 0%, 32%, .15);
+  --grey-3-semi-trans: hsla(0, 0%, 32%, .65);
+  --grey-4: hsl(0, 0%, 38%);
+  --grey-5: hsl(0, 0%, 49%);
+  --grey-6: hsl(0, 0%, 62%);
+  --grey-7: hsl(0, 0%, 69%);
+  --grey-8: hsl(0, 0%, 81%);
+  --grey-9: hsl(0, 0%, 88%);
+  --grey-9-trans: hsla(0, 0%, 88%, .50);
+  --grey-10: hsl(0, 0% , 97%);
+  --grey-11: hsl(0, 0%, 100%);
+}
+
 html, body {
     margin: 0;
     padding: 0;
@@ -8,4 +38,18 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
 }
 
+h1, h2, h3, h4, h5, h6 {margin: 0; padding: 0;}
+
 h3 {font-size: 32px;}
+
+header {
+    padding: 16px;
+    color: var(--primary-10);
+    background-color: var(--primary-3);
+}
+
+.search {
+    height: 100vh;
+    background: url('sample-background.jpg');
+    background-size: cover;
+}
