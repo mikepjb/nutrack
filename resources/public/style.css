@@ -61,6 +61,14 @@ header {
 }
 
 .search > input {
+    border: 0px;
+    border-radius: 4px;
     font-size: 24px;
     padding: 12px;
+}
+
+.search > input:focus {
+    border: 2px solid var(--primary-8);
+    border-radius: 4px;
+    padding: 10px;
 }
