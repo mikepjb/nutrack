@@ -12,11 +12,11 @@
    [:h3 "Nutrack"]])
 
 (defn search []
-  [:div
+  [:section
    [:input]])
 
 (defn page []
-  [:section.search
+  [:div.background
    [header]
    [search]])
 

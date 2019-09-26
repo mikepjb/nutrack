@@ -45,10 +45,10 @@ h3 {font-size: 32px;}
 header {
     padding: 16px;
     color: var(--primary-10);
-    background-color: var(--primary-3);
+    background-image: linear-gradient(var(--primary-1), rgba(100, 100, 100, 0));
 }
 
-.search {
+.background {
     height: 100vh;
     background: url('sample-background.jpg');
     background-size: cover;
