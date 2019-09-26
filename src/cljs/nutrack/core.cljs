@@ -1,11 +1,12 @@
 (ns nutrack.core
-  (:require [reagent.core :as reagent]))
+  (:require [reagent.core :as reagent]
+            [clojure.string :refer [includes? lower-case]]))
 
 (enable-console-print!)
 
 (println "alright!")
 
-(defonce state (reagent/atom {}))
+(defonce input (reagent/atom ""))
 
 (defn header []
   [:header
@@ -18,21 +19,25 @@
    "Lemon"
    "Pepper"])
 
-(defn suggestions []
+(defn suggestions [input]
   [:div.suggestions
    [:ul
     (map (fn [e]
-           ^{:key e} [:li e]) ingredients)]])
+           ^{:key e} [:li e])
+         (filter (fn [i] (includes?
+                          (lower-case i)
+                          (lower-case input))) ingredients))]])
 
-(defn search []
+(defn search [input]
   [:section.search
    [:div
-    [:input]
-    [suggestions]]])
+    [:input {:value @input
+             :on-change #(reset! input (-> % .-target .-value))}]
+    [suggestions @input]]])
 
-(defn page []
+(defn page [input]
   [:div.background
    [header]
-   [search]])
+   [search input]])
 
-(reagent/render [page] (.getElementById js/document "app"))
+(reagent/render [page input] (.getElementById js/document "app"))
