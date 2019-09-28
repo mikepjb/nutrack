@@ -1,5 +1,7 @@
 # nutrack
 
+[![CircleCI](https://circleci.com/gh/mikepjb/nutrack.svg?style=svg)](https://circleci.com/gh/mikepjb/nutrack)
+
 Understand the value in your food.
 
 This is a web application that breaksdown the value of your weekly shop, in
