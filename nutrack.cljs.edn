@@ -1,2 +1,0 @@
-^{:css-dirs ["resources/public"]}
-{:main nutrack.core}

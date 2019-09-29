@@ -9,11 +9,13 @@
         ;; server
         yada {:mvn/version "1.2.15"}
         migratus {:mvn/version "1.2.4"}
-        com.taoensso/timbre {:mvn/version "4.10.0"}
-        com.fzakaria/slf4j-timbre {:mvn/version "0.3.14"}
+        ;; by default, including timbre includes debug logs when using
+        ;; figwheel-main. This is disabled for now.
+        ;; com.taoensso/timbre {:mvn/version "4.10.0"}
+        ;; com.fzakaria/slf4j-timbre {:mvn/version "0.3.14"}
         org.postgresql/postgresql {:mvn/version "42.2.5"}
 
-        ;; monitoring
+        ;; ;; monitoring
         clj-commons/iapetos {:mvn/version "0.1.9"}
         io.prometheus/simpleclient_hotspot {:mvn/version"0.6.0"}}
  :paths ["src/clj" "src/cljs" "test" "target" "resources"]
