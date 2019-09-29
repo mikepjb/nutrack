@@ -1,5 +1,6 @@
 (ns nutrack.core
   (:require [reagent.core :as reagent]
+            [re-frame.core :as rf]
             [clojure.string :refer [includes? lower-case]]))
 
 (enable-console-print!)
@@ -47,12 +48,27 @@
              :on-change #(reset! input (-> % .-target .-value))}]
     [suggestions @input]]])
 
-(defn expandable-component [title]
-  (let [s (reagent/atom {:open false})]
-    (fn [title]
+(rf/reg-event-db
+ :initialize
+ (fn [_ _]
+   {}))
+
+(rf/reg-event-db
+ :panel/toggle
+ (fn [db [_ id]]
+   (update-in db [:panels id] not)))
+
+(rf/reg-sub
+ :panel/state
+ (fn [db [_ id]]
+   (get-in db [:panels id])))
+
+(defn expandable-component [id title]
+  (let [s (reagent/atom {})]
+    (fn [id title]
       (let [child-height (:child-height @s)
-            open? (:open @s)]
-        [:section.expandable {:on-click #(swap! s update :open not)}
+            open? @(rf/subscribe [:panel/state id])]
+        [:section.expandable {:on-click #(rf/dispatch [:panel/toggle id])}
          [:div title (if open? angle-up angle-down)]
          [:div {:style {:max-height (if open? child-height 0)
                         :transition "max-height 0.8s"
@@ -66,6 +82,6 @@
   [:div.background
    [header]
    [search input]
-   [expandable-component "Tikka Masala Recipe"]])
+   [expandable-component :tikka-id "Tikka Masala Recipe"]])
 
 (reagent/render [page input] (.getElementById js/document "app"))
