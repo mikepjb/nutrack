@@ -41,14 +41,18 @@
              :on-change #(reset! input (-> % .-target .-value))}]
     [suggestions @input]]])
 
-(defn expandable-component []
-  [:section.expandable
-   [:div "Tikka Masala Recipe" angle-down]])
+(defn expandable-component [title]
+  (let [s (reagent/atom {:open false})]
+    (fn [title]
+      [:section.expandable {:on-click #(swap! s update :open not)}
+       [:div title angle-down]
+       (if (:open @s)
+         [:div "hello"])])))
 
 (defn page [input]
   [:div.background
    [header]
    [search input]
-   [expandable-component]])
+   [expandable-component "Tikka Masala Recipe"]])
 
 (reagent/render [page input] (.getElementById js/document "app"))
