@@ -13,6 +13,10 @@
   [:header
    [:h3 "Nutrack"]])
 
+(defn footer []
+  [:footer
+   [:h5 "Michael Bruce ©"]])
+
 (def sort-up
   [:svg {:viewBox "0 0 320 512", :xmlns "http://www.w3.org/2000/svg"}
    [:path
@@ -111,7 +115,7 @@
 (defn table [data]
   [:section.table
    (let [table @(rf/subscribe [::tables :ingredients])]
-     [:table
+     [:table.shadow
       ^{:key :header}
       [:tbody
        [:tr
@@ -129,7 +133,8 @@
    [header]
    [search input]
    [table ingredient-table]
-   [expandable-component :tikka-id "Tikka Masala Recipe"]])
+   [expandable-component :tikka-id "Tikka Masala Recipe"]
+   [footer]])
 
 (defonce _init (rf/dispatch-sync [:initialize]))
 (reagent/render [page input] (.getElementById js/document "app"))
