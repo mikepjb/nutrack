@@ -64,7 +64,7 @@
    (get-in db [:panels id])))
 
 (defn expandable-component [id title]
-  (let [s (reagent/atom {})]
+  (let [s (reagent/atom {})] ;; will hold the child-height still..
     (fn [id title]
       (let [child-height (:child-height @s)
             open? @(rf/subscribe [:panel/state id])]
