@@ -78,6 +78,18 @@
                     (swap! s assoc :child-height (.-clientHeight %)))}
            "This is a recipe to create Tikka Masala"]]]))))
 
+(def ingredient-table
+  [["Name" "Protein" "Carbs" "Fat" "Amount" "Cost"]
+   ["Chicken","24g","0g","8g","2000g","£22.24"]
+   ["Beef","Mince","19.7g","0g","14.9g","900g","£4.50"]
+   ["Blueberries","0.7g","14.5g","0.3g","150g","£2.00"]
+   ["Oat","Milk","1g","6.6g","2.8g","1000g","£1.80"]
+   ["Whey","90g","2.5g","0.3g","125g","£1.75"]
+   ["Egg","12.6g","0.4g","9g","400g","£1.60"]
+   ["Chopped","Tomatoes","1.3g","3.6g","0.2g","800g","£1.00"]
+   ["Egg","Noodles","4.7g","25.7g","0.5g","250g","£0.99"]
+   ["Butter","0.6g","0.7g","82g","100g","£0.80"]])
+
 (defn page [input]
   [:div.background
    [header]
