@@ -1,5 +1,6 @@
 (ns nutrack.core
-  (:require [reagent.core :as reagent]
+  (:require [nutrack.svg :refer [angle-up angle-down sort-up sort-down]]
+            [reagent.core :as reagent]
             [re-frame.core :as rf]
             [clojure.string :refer [includes? lower-case]]))
 
@@ -16,30 +17,6 @@
 (defn footer []
   [:footer
    [:h5 "Michael Bruce ©"]])
-
-(def sort-up
-  [:svg {:viewBox "0 0 320 512", :xmlns "http://www.w3.org/2000/svg"}
-   [:path
-    {:d
-     "M279 224H41c-21.4 0-32.1-25.9-17-41L143 64c9.4-9.4 24.6-9.4 33.9 0l119 119c15.2 15.1 4.5 41-16.9 41z"}]])
-
-(def sort-down
-  [:svg {:viewBox "0 0 320 512", :xmlns "http://www.w3.org/2000/svg"}
-   [:path
-    {:d
-     "M41 288h238c21.4 0 32.1 25.9 17 41L177 448c-9.4 9.4-24.6 9.4-33.9 0L24 329c-15.1-15.1-4.4-41 17-41z"}]])
-
-(def angle-down
-  [:svg {:viewBox "0 0 320 512", :xmlns "http://www.w3.org/2000/svg"}
-   [:path
-    {:d
-     "M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z"}]])
-
-(def angle-up
-  [:svg {:viewBox "0 0 320 512", :xmlns "http://www.w3.org/2000/svg"}
- [:path
-  {:d
-     "M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"}]])
 
 (def ingredients
   ["Steak"
