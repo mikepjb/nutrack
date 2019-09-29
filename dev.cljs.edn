@@ -1,3 +1,2 @@
-^{:css-dirs ["resources/public"]
-  :log-level :off}
+^{:css-dirs ["resources/public"]}
 {:main nutrack.core}
