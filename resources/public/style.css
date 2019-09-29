@@ -42,6 +42,8 @@ h1, h2, h3, h4, h5, h6 {margin: 0; padding: 0;}
 
 h3 {font-size: 32px;}
 
+svg {width: 12px;}
+
 ul {
     padding: 4px;
     margin: 4px;
@@ -88,3 +90,19 @@ header {
                 0 3px 6px var(--grey-1-trans),
                 0 10px 20px var(--grey-3-trans);
 }
+
+.expandable {
+    display: flex;
+    justify-content: center;
+
+}
+
+.expandable div {
+    display: inline-flex;
+    background-color: var(--grey-10);
+    padding: 16px;
+    border-radius: 4px;
+    align-items: center;
+}
+
+.expandable svg {padding: 0 0 0 8px;}
