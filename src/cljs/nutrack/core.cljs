@@ -94,10 +94,11 @@
    (let [table @(rf/subscribe [::tables :ingredients])]
      [:table.shadow
       ^{:key :header}
-      [:tbody
+      [:thead
        [:tr
         (for [h (:header table)]
-          ^{:key h} [:th h])]
+          ^{:key h} [:th h])]]
+      [:tbody
        (for [row (:rows table)]
          ^{:key (first row)}
          [:tr
