@@ -57,6 +57,16 @@ table {
 }
 
 th, td {padding: 8px;}
+div.sort {
+    display: inline-flex;
+    flex-direction: column;
+    padding: 12px;
+}
+.sort svg {
+    width: 10px;
+    padding: 0;
+    margin: -8px;
+}
 
 ul {
     padding: 4px;

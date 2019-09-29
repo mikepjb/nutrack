@@ -56,8 +56,8 @@
 (rf/reg-event-db
  :initialize
  (fn [_ _]
-   {:tables {:ingredients {:header (first ingredient-table)
-                           :rows (vec (rest ingredient-table))}}}))
+   {:tables {:ingredient {:header (first ingredient-table)
+                          :rows (vec (rest ingredient-table))}}}))
 
 (rf/reg-event-db
  :panel/toggle
@@ -89,28 +89,33 @@
                     (swap! s assoc :child-height (.-clientHeight %)))}
            "This is a recipe to create Tikka Masala"]]]))))
 
-(defn table [data]
-  [:section.table
-   (let [table @(rf/subscribe [::tables :ingredients])]
-     [:table.shadow
-      ^{:key :header}
-      [:thead
-       [:tr
-        (for [h (:header table)]
-          ^{:key h} [:th h])]]
-      [:tbody
-       (for [row (:rows table)]
-         ^{:key (first row)}
-         [:tr
-          (for [v row]
-            ^{:key (str (first row) "-" v)}
-            [:td v])])]])])
+(defn table [table-key]
+  (let [s (reagent/atom {})]
+    (fn [table-key]
+      [:section.table
+       [:div (pr-str @s)]
+       (let [table @(rf/subscribe [::tables table-key])]
+         [:table.shadow
+          ^{:key :header}
+          [:thead
+           [:tr
+            (for [h (:header table)]
+              ^{:key h} [:th h [:div.sort
+                                [:div sort-up] ;; ready to include on-click 21:37
+                                [:div sort-down]]])]]
+          [:tbody
+           (for [row (:rows table)]
+             ^{:key (first row)}
+             [:tr
+              (for [v row]
+                ^{:key (str (first row) "-" v)}
+                [:td v])])]])])))
 
 (defn page [input]
   [:div.background
    [header]
    [search input]
-   [table ingredient-table]
+   [table :ingredient]
    [expandable-component :tikka-id "Tikka Masala Recipe"]
    [footer]])
 
