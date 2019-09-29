@@ -99,7 +99,7 @@ header {
 
 }
 
-.expandable div {
+.expandable div:first-child {
     display: inline-flex;
     background-color: var(--grey-10);
     padding: 16px;

@@ -44,10 +44,17 @@
 (defn expandable-component [title]
   (let [s (reagent/atom {:open false})]
     (fn [title]
-      [:section.expandable {:on-click #(swap! s update :open not)}
-       [:div title angle-down]
-       (if (:open @s)
-         [:div "hello"])])))
+      (let [child-height (:child-height @s)
+            open? (:open @s)]
+        [:section.expandable {:on-click #(swap! s update :open not)}
+         [:div title angle-down]
+         [:div {:style {:max-height (if open? child-height 0)
+                        :transition "max-height 0.8s"
+                        :overflow "hidden"}}
+          [:div
+           {:ref #(when % ;; % contains the DOM node.
+                    (swap! s assoc :child-height (.-clientHeight %)))}
+           "This is a recipe to create Tikka Masala"]]]))))
 
 (defn page [input]
   [:div.background
