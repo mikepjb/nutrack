@@ -44,12 +44,19 @@ h3 {font-size: 32px;}
 
 svg {width: 12px;}
 
+section.table {
+    display: flex;
+    justify-content: center;
+}
+
 table {
     background-color: var(--grey-10);
     border-radius: 4px;
     padding: 8px;
     margin: 32px 0;
 }
+
+th, td {padding: 8px;}
 
 ul {
     padding: 4px;

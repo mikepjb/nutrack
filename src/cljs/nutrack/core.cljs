@@ -91,7 +91,7 @@
    ["Butter","0.6g","0.7g","82g","100g","£0.80"]])
 
 (defn table [data]
-  [:div
+  [:section.table
    [:table
     [:tr
      (for [h (first data)]
