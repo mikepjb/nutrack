@@ -43,15 +43,15 @@
 
 (def ingredient-table
   [["Name" "Protein" "Carbs" "Fat" "Amount" "Cost"]
-   ["Chicken","24g","0g","8g","2000g","£22.24"]
-   ["Beef Mince","19.7g","0g","14.9g","900g","£4.50"]
-   ["Blueberries","0.7g","14.5g","0.3g","150g","£2.00"]
-   ["Oat Milk","1g","6.6g","2.8g","1000g","£1.80"]
-   ["Whey","90g","2.5g","0.3g","125g","£1.75"]
-   ["Egg","12.6g","0.4g","9g","400g","£1.60"]
-   ["Chopped Tomatoes","1.3g","3.6g","0.2g","800g","£1.00"]
-   ["Egg Noodles","4.7g","25.7g","0.5g","250g","£0.99"]
-   ["Butter","0.6g","0.7g","82g","100g","£0.80"]])
+   ["Chicken" 24 0 8 2000 22.24]
+   ["Beef Mince" 19.7 0 14.9 900 4.50]
+   ["Blueberries" 0.7 14.5 0.3 150 2.00]
+   ["Oat Milk" 1 6.6 2.8 1000 1.80]
+   ["Whey" 90 2.5 0.3 125 1.75]
+   ["Egg" 12.6 0.4 9 400 1.60]
+   ["Chopped Tomatoes" 1.3 3.6 0.2 800 1.00]
+   ["Egg Noodles" 4.7 25.7 0.5 250 0.99]
+   ["Butter" 0.6 0.7 82 100 0.80]])
 
 (rf/reg-event-db
  :initialize
