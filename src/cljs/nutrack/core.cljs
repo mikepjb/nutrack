@@ -1,5 +1,5 @@
 (ns nutrack.core
-  (:require [nutrack.svg :refer [angle-up angle-down sort-up sort-down]]
+  (:require [nutrack.svg :as svg]
             [reagent.core :as reagent]
             [re-frame.core :as rf]
             [clojure.string :refer [includes? lower-case]]))
@@ -80,7 +80,7 @@
       (let [child-height (:child-height @s)
             open? @(rf/subscribe [:panel/state id])]
         [:section.expandable {:on-click #(rf/dispatch [:panel/toggle id])}
-         [:div title (if open? angle-up angle-down)]
+         [:div title (if open? svg/angle-up svg/angle-down)]
          [:div {:style {:max-height (if open? child-height 0)
                         :transition "max-height 0.8s"
                         :overflow "hidden"}}
@@ -89,22 +89,33 @@
                     (swap! s assoc :child-height (.-clientHeight %)))}
            "This is a recipe to create Tikka Masala"]]]))))
 
+(defn cycle-direction [old-i new-i direction]
+  (if (= old-i new-i)
+    (if (= direction :descending) :ascending :descending)
+    (if (= new-i 0) ;; if name column selected
+      :descending :ascending)))
+
 (defn table [table-key]
   (let [s (reagent/atom {})]
     (fn [table-key]
       [:section.table
-       [:div (pr-str @s)]
-       (let [table @(rf/subscribe [::tables table-key])]
+       (let [table @(rf/subscribe [::tables table-key])
+             key (:sort-key @s)
+             rows (cond->> (:rows table)
+                    key (sort-by #(nth % key))
+                    (= :ascending (:sort-direction @s)) reverse)]
          [:table.shadow
           ^{:key :header}
           [:thead
            [:tr
-            (for [h (:header table)]
-              ^{:key h} [:th h [:div.sort
-                                [:div sort-up] ;; ready to include on-click 21:37
-                                [:div sort-down]]])]]
+            (for [[i h] (map vector (range) (:header table))]
+              ^{:key h} [:th {:on-click #(swap! s assoc
+                                                :sort-key i
+                                                :sort-direction (cycle-direction
+                                                                 (:sort-key @s)i (:sort-direction @s)))}
+                         h svg/sort])]]
           [:tbody
-           (for [row (:rows table)]
+           (for [row rows]
              ^{:key (first row)}
              [:tr
               (for [v row]
